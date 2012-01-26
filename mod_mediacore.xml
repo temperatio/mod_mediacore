@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install type="module" version="1.5.0">
+  <name>Last Mediacore videos</name> 
+  <author>César Gómez</author> 
+  <creationDate>2011-01-26</creationDate> 
+  <copyright>All rights reserved by Temperatio 2012</copyright> 
+  <license>GPL 2.0</license> 
+  <authorEmail>cesar@temperatio.com</authorEmail> 
+  <authorUrl>www.temperatio.com</authorUrl> 
+  <version>1.0.0</version> 
+  <description>Get the las videos from a medicarore site</description>
+  <files>
+    <filename module="mod_mediacore">mod_mediacore.php</filename>
+    <filename>index.html</filename>
+  </files>
+    <!-- Optional parameters -->
+  <params>
+    <param name="apiurl" type="text" default="" label="API URL" description="Dirección del API de mediacore" />
+    <param name="apikey" type="text" default="" label="Clave API" description="Clave del API de medicore" />
+    <param name="showtitle" type="radio" default="1" label="¿Mostrar título?" description="">
+      <option value="1">Si</option>
+      <option value="0">No</option>
+    </param>
+    <param name="titlelength" type="text" default="50" label="Longitud del título" description="Número de caracteres a mostart del título. 0 para no cortar." />
+    <param name="showthumb" type="radio" default="1" label="¿Mostrar imagen?" description="">
+      <option value="1">Si</option>
+      <option value="0">No</option>
+    </param>
+    <param name="showdesc" type="radio" default="1" label="¿Mostrar descripción?" description="">
+      <option value="1">Si</option>
+      <option value="0">No</option>
+    </param>
+    <param name="desclength" type="text" default="180" label="Longitud de la descripción" description="Número de caracteres a mostrar de la descripción. 0 para no cortar." />
+    <param name="linkdest" type="list" default="" label="Destino del enlace" description="">
+      <option value="">--No establecido--</option>
+      <option value="_self">Abrir en la misma ventana / marco</option>
+      <option value="_blank">Abrir en ventana nueva</option>
+      <option value="_parent">Abrir en ventana raíz / marco</option>
+      <option value="_top">Abrir en marco superior (sustituye a todos los marcos)</option>
+    </param>
+  </params>
+</install>
