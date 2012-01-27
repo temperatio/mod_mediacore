@@ -7,6 +7,7 @@ $items = $params->get('items', 4);
 $showtitle = $params->get('showtitle', 1);
 $titlelength = $params->get('titlelength', 50);
 $showthumb = $params->get('showthumb', 1);
+$thumbsize = $params->get('thumbsize', 'm');
 $showdesc = $params->get('showdesc', 1);
 $desclength = $params->get('desclength', 180);
 $linkdest = $params->get('linkdest', '');
@@ -34,14 +35,26 @@ function truncate($text, $lenght) {
 
 $result = fetch_media_list(array('type' => 'video', 'limit' => $items), $api_url, $api_key);
 $videos = $result->media;
+$videoscount = count($videos);
+$i=1;
 ?>
 
 <?php foreach ($videos as $video): ?>
-<div class="mcvideo">
+<div class="mcvideo<?php echo ($i++ == $videoscount) ? ' last': ''; ?>">
   <?php if($showthumb || $showtitle): ?>
   <a href="<?php echo $video->url;?>" class="mclink" target="<?php echo $linkdest; ?>">
     <?php if($showthumb): ?>
-      <img src="<?php echo $video->thumbs->m-> url;?>" alt="<?php echo $video->title; ?>" /> 
+      <?php 
+        $thumburl = '';
+        if($thumbsize == 'l'){
+          $thumburl = $video->thumbs->l->url;
+        } elseif ($thumbsize == 's'){
+          $thumburl = $video->thumbs->s->url;
+        } else {
+          $thumburl = $video->thumbs->m->url;
+        }
+      ?>
+      <img src="<?php echo $thumburl ;?>" alt="<?php echo $video->title; ?>" /> 
     <?php endif ?>
     <?php if($showtitle) : ?>
       <h4 class="mctitle">
@@ -50,7 +63,7 @@ $videos = $result->media;
     <?php endif ?>
   </a>
   <?php endif ?>
-   <?php if($excerpt_length > 0):?>
+   <?php if($showdesc && $desclength > 0):?>
     <p class="mcdescription"><?php echo truncate($video->description_plain, $desclength);?></p>
    <?php endif ?>
 </div>

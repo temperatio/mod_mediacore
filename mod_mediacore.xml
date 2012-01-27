@@ -26,6 +26,11 @@
       <option value="1">Si</option>
       <option value="0">No</option>
     </param>
+    <param name="thumbsize" type="radio" default="m" label="Tamaño de la imagen" description="">
+      <option value="s">Pequeño</option>
+      <option value="m">Mediano</option>
+      <option value="l">Grande</option>
+    </param>
     <param name="showdesc" type="radio" default="1" label="¿Mostrar descripción?" description="">
       <option value="1">Si</option>
       <option value="0">No</option>
